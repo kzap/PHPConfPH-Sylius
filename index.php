@@ -1,5 +1,8 @@
 <?php
 include('includes/application_top.php');
+
+// code goes here
+
 ?>
 <?php include('includes/header.php'); ?>
 <header>
