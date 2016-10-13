@@ -1,0 +1,18 @@
+/nbproject/private/
+ace
+_ace
+*.doc
+*.docx
+.idea
+
+# Ignore Composer Directory
+vendor/
+
+# Ignore Node Modules
+node_modules/
+
+# Vagrant dir
+.vagrant
+
+# Build Dirs
+.ssh/
