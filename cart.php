@@ -14,7 +14,7 @@ if (isset($_GET['action']) == 'add_to_cart' && isset($_GET['product_id'])) {
     $product = $productsApp->getProductById($_GET['product_id']);
 
 	$item = new OrderItem();
-	$item->setUnitPrice(123); // fake price
+	$item->setUnitPrice((int) $product->getPrice()); // fake price
 
 	// get QTY
 	$qty = 1;

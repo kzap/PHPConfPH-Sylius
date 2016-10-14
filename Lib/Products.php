@@ -25,23 +25,7 @@ class Products
 
             while ($row = $result->fetch_object()) {
 
-                $product = new Product();
-                $product->setCurrentLocale('en');
-                $product->setFallbackLocale('en');
-                $product->setCode($row->product_id);
-                $product->setName($row->product_name);
-                $product->setDescription($row->product_description);
-
-                $productVariant = new ProductVariant();
-                $productVariant->setPrice((int) $row->product_srp);
-                
-                // add image
-                $productVariantImage = new ProductVariantImage();
-                $productVariantImage->setPath($row->product_image);
-                $productVariant->addImage($productVariantImage);
-
-                $product->addVariant($productVariant);
-
+                $product = $this->createProduct($row);
                 $products[] = $product;
             }
 
@@ -60,12 +44,7 @@ class Products
         	
         	if ($row = $result->fetch_object()) {
   
-                $product = new Product();
-                $product->setCurrentLocale('en');
-                $product->setFallbackLocale('en');
-                $product->setCode($row->product_id);
-                $product->setName($row->product_name);
-                $product->setDescription($row->product_description);
+                $product = $this->createProduct($row);
 
                 return $product;
             }
@@ -75,5 +54,27 @@ class Products
         }
 
         return false;
+    }
+
+    protected function createProduct($row)
+    {
+    	$product = new Product();
+        $product->setCurrentLocale('en');
+        $product->setFallbackLocale('en');
+        $product->setCode($row->product_id);
+        $product->setName($row->product_name);
+        $product->setDescription($row->product_description);
+
+        $productVariant = new ProductVariant();
+        $productVariant->setPrice((int) $row->product_srp);
+        
+        // add image
+        $productVariantImage = new ProductVariantImage();
+        $productVariantImage->setPath($row->product_image);
+        $productVariant->addImage($productVariantImage);
+
+        $product->addVariant($productVariant);
+
+        return $product;
     }
 }
