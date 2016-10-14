@@ -3,6 +3,7 @@
 namespace Lib;
 
 use Sylius\Component\Core\Model\Product;
+use Sylius\Component\Core\Model\ProductVariant;
 use Sylius\Component\Product\Model\Attribute;
 use Sylius\Component\Product\Model\AttributeValue;
 use Sylius\Component\Attribute\Model\AttributeValueInterface;
@@ -34,6 +35,10 @@ class Products
                 $product->setName($row->product_name);
                 $product->setDescription($row->product_description);
 
+                $productVariant = new ProductVariant();
+                $productVariant->setPrice((int) $row->product_srp);
+                $product->addVariant($productVariant);
+
                 $products[] = $product;
             }
 
@@ -58,7 +63,7 @@ class Products
                 $product->setCode($row->product_id);
                 $product->setName($row->product_name);
                 $product->setDescription($row->product_description);
-                
+
                 return $product;
             }
 

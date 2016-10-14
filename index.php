@@ -18,6 +18,8 @@ $products = $productsApp->getAllProducts();
 			<img src="http://placehold.it/150x150" class="img-responsive" alt="Responsive image" />
 			<strong><?php echo $product->getName(); ?></strong><br />
 			<br />
+			<h3>PHP <?php echo number_format($product->getPrice()); ?></h3>
+			<br />
 			<a href="/cart.php?action=add_to_cart&product_id=<?php echo $product->getCode(); ?>" class="btn btn-success">
 				Add To Cart
 			</a>
