@@ -15,7 +15,7 @@ $products = $productsApp->getAllProducts();
 	<div class="row">
 	<?php foreach ($products as $product): ?>
 		<div class="col-md-4" align="center">
-			<img src="http://placehold.it/150x150" class="img-responsive" alt="Responsive image" />
+			<img src="<?php echo $product->getImage()->getPath(); ?>" class="img-responsive" alt="Responsive image" style="width: 300px; height: 250;" />
 			<strong><?php echo $product->getName(); ?></strong><br />
 			<br />
 			<h3>PHP <?php echo number_format($product->getPrice()); ?></h3>

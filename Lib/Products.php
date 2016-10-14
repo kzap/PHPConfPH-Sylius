@@ -4,10 +4,7 @@ namespace Lib;
 
 use Sylius\Component\Core\Model\Product;
 use Sylius\Component\Core\Model\ProductVariant;
-use Sylius\Component\Product\Model\Attribute;
-use Sylius\Component\Product\Model\AttributeValue;
-use Sylius\Component\Attribute\Model\AttributeValueInterface;
-use Doctrine\Common\Collections\ArrayCollection;
+use Sylius\Component\Core\Model\ProductVariantImage;
 
 /**
  * @author andre@enthropia.com
@@ -37,6 +34,12 @@ class Products
 
                 $productVariant = new ProductVariant();
                 $productVariant->setPrice((int) $row->product_srp);
+                
+                // add image
+                $productVariantImage = new ProductVariantImage();
+                $productVariantImage->setPath($row->product_image);
+                $productVariant->addImage($productVariantImage);
+
                 $product->addVariant($productVariant);
 
                 $products[] = $product;
