@@ -3,6 +3,10 @@
 namespace Lib;
 
 use Sylius\Component\Core\Model\Product;
+use Sylius\Component\Product\Model\Attribute;
+use Sylius\Component\Product\Model\AttributeValue;
+use Sylius\Component\Attribute\Model\AttributeValueInterface;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @author andre@enthropia.com
@@ -26,6 +30,7 @@ class Products
                 $product = new Product();
                 $product->setCurrentLocale('en');
                 $product->setFallbackLocale('en');
+                $product->setCode($row->product_id);
                 $product->setName($row->product_name);
                 $product->setDescription($row->product_description);
 
