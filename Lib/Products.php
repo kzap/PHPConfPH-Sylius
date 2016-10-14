@@ -20,7 +20,7 @@ class Products
 
     public function getAllProducts()
     {
-        if ($result = $this->mysqli->query('SELECT * FROM `Products` WHERE 1')) {
+        if ($result = $this->mysqli->query('SELECT * FROM `Products` WHERE 1 ORDER BY RAND()')) {
         	$products = array();
 
             while ($row = $result->fetch_object()) {
