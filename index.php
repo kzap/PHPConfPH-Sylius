@@ -20,9 +20,23 @@ $products = $productsApp->getAllProducts();
 			<br />
 			<h3>PHP <?php echo number_format($product->getPrice()); ?></h3>
 			<br />
+			<!--
 			<a href="/cart.php?action=add_to_cart&product_id=<?php echo $product->getCode(); ?>" class="btn btn-success">
 				Add To Cart
 			</a>
+			-->
+			<form action="/cart" method="POST">
+				<select name="qty">
+					<option>1</option>
+					<option>2</option>
+					<option>3</option>
+					<option>4</option>
+					<option>5</option>
+				</select>
+				<button class="btn btn-success">Add To Cart</button>
+				<input type="hidden" name="product_id" value="<?php echo $product->getCode(); ?>" />
+				<input type="hidden" name="action" value="add_to_cart" />
+			</form>
 
 		</div>
 	<?php endforeach; ?>
