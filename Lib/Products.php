@@ -51,16 +51,15 @@ class Products
         if ($result = $this->mysqli->query(sprintf('SELECT * FROM `Products` WHERE `product_id` = %s', $id))) {
         	
         	if ($row = $result->fetch_object()) {
-                dump($row);
-/*
+  
                 $product = new Product();
                 $product->setCurrentLocale('en');
                 $product->setFallbackLocale('en');
+                $product->setCode($row->product_id);
                 $product->setName($row->product_name);
                 $product->setDescription($row->product_description);
-
+                
                 return $product;
-*/
             }
 
             /* free result set */
